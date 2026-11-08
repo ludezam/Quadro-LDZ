@@ -1,0 +1,16 @@
+.gradle/
+.idea/
+local.properties
+**/build/
+*.iml
+.android/
+tools.local.json
+outputs/
+javac.*.args
+*.keystore
+*.jks
+*.idsig
+*.local.cjs
+.env
+.env.*
+!tools.local.example.json

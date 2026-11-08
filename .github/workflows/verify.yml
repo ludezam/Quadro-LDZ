@@ -1,0 +1,37 @@
+name: Verificar e compilar
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/verify-panel.cjs
+  build:
+    needs: verify
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Instalar SDK 34
+        shell: pwsh
+        run: sdkmanager 'platforms;android-34' 'build-tools;34.0.0'
+      - name: Compilar e verificar APK de desenvolvimento
+        shell: pwsh
+        run: ./build-apk.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Quadro-LDZ-desenvolvimento
+          path: outputs/Quadro-LDZ-0.3.0-teste.apk
+          if-no-files-found: error

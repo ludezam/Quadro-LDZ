@@ -1,0 +1,332 @@
+[
+  {
+    "file": "pourville.jpg",
+    "title": "Cliff Walk at Pourville",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Cliff_Walk_at_Pourville_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "normandy.jpg",
+    "title": "Arrival of the Normandy Train, Gare Saint-Lazare",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Arrival_of_the_Normandy_Train,_Gare_Saint-Lazare_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-03.jpg",
+    "title": "Paris Street; Rainy Day",
+    "artist": "Gustave Caillebotte",
+    "source": "https://commons.wikimedia.org/wiki/File:Gustave_Caillebotte_-_Paris_Street;_Rainy_Day_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-01.jpg",
+    "title": "Marinha, Guarujá",
+    "artist": "Almeida Júnior",
+    "source": "https://commons.wikimedia.org/wiki/File:Almeida_J%C3%BAnior_-_Seascape,_Guaruj%C3%A1_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-04.jpg",
+    "title": "Nocturne: Blue and Gold — Southampton Water",
+    "artist": "James McNeill Whistler",
+    "source": "https://commons.wikimedia.org/wiki/File:James_McNeill_Whistler_-_Nocturne-_Blue_and_Gold--Southampton_Water_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-05.jpg",
+    "title": "The Herring Net",
+    "artist": "Winslow Homer",
+    "source": "https://commons.wikimedia.org/wiki/File:Winslow_Homer_-_The_Herring_Net_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-06.jpg",
+    "title": "Landscape with Saint John on Patmos",
+    "artist": "Nicolas Poussin",
+    "source": "https://commons.wikimedia.org/wiki/File:Nicolas_Poussin_-_Landscape_with_Saint_John_on_Patmos_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-02.jpg",
+    "title": "Paisagem do Sítio Rio das Pedras",
+    "artist": "Almeida Júnior",
+    "source": "https://commons.wikimedia.org/wiki/File:Almeida_J%C3%BAnior_-_Landscape_at_the_Rio_das_Pedras_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-07.jpg",
+    "title": "The Home of the Heron",
+    "artist": "George Inness",
+    "source": "https://commons.wikimedia.org/wiki/File:George_Inness_-_The_Home_of_the_Heron_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-08.jpg",
+    "title": "The Bay of Marseilles, Seen from L’Estaque",
+    "artist": "Paul Cézanne",
+    "source": "https://commons.wikimedia.org/wiki/File:Paul_C%C3%A9zanne_-_The_Bay_of_Marseilles,_Seen_from_L%27Estaque_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-09.jpg",
+    "title": "The Waterfall",
+    "artist": "Henri Rousseau",
+    "source": "https://commons.wikimedia.org/wiki/File:Henri_Rousseau_-_The_Waterfall_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-03.jpg",
+    "title": "Baía de São Vicente",
+    "artist": "Benedito Calixto",
+    "source": "https://commons.wikimedia.org/wiki/File:Benedito_Calixto_-_Ba%C3%ADa_de_S%C3%A3o_Vicente,_1905.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-10.jpg",
+    "title": "A Sunday on La Grande Jatte",
+    "artist": "Georges Seurat",
+    "source": "https://commons.wikimedia.org/wiki/File:Georges_Seurat_-_A_Sunday_on_La_Grande_Jatte_--_1884_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-11.jpg",
+    "title": "Flower Clouds",
+    "artist": "Odilon Redon",
+    "source": "https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_Flower_Clouds_-_Google_Art_Project.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-12.jpg",
+    "title": "Croquet Scene",
+    "artist": "Winslow Homer",
+    "source": "https://commons.wikimedia.org/wiki/File:Winslow_Homer_-_Croquet_Scene_-_Google_Art_ProjectFXD.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-04.jpg",
+    "title": "Jardim à Beira-mar",
+    "artist": "Benedito Calixto",
+    "source": "https://commons.wikimedia.org/wiki/File:Benedito_Calixto_de_Jesus_-_Jardim_%C3%A0_Beira-mar_(Paisagem),_1894.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-13.jpg",
+    "title": "River Scene at Bennecourt",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_River_Scene_at_Bennecourt,_Seine.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-14.jpg",
+    "title": "Vétheuil",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_V%C3%A9theuil,_1901_(Art_Institute_of_Chicago).jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-15.jpg",
+    "title": "Wheatstack (Snow Effect, Overcast Day)",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:1281_Wheatstack_(Snow_Effect,_Overcast_day),_1890-91,_66_x_93_cm,_26_x_36_5-8,_The_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-05.jpg",
+    "title": "Canto de Praia",
+    "artist": "Antônio Parreiras",
+    "source": "https://commons.wikimedia.org/wiki/File:Ant%C3%B4nio_Parreiras_-_Canto_de_Praia,_1886.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-16.jpg",
+    "title": "Wheatstacks (End of Summer)",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Wheatstacks_(End_of_Summer),_1890-91_(190_Kb);_Oil_on_canvas,_60_x_100_cm_(23_5-8_x_39_3-8_in),_The_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-17.jpg",
+    "title": "Water Lily Pond",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:1900_C.Monet_Japonski_mostek_w_Giverny..jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-18.jpg",
+    "title": "Bordighera",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Bordighera_by_Claude_Monet_1884.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-06.jpg",
+    "title": "Paisagem (Água parada)",
+    "artist": "Antônio Parreiras",
+    "source": "https://commons.wikimedia.org/wiki/File:Ant%C3%B4nio_Parreiras_-_Paisagem_(%C3%81gua_parada).JPG",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-19.jpg",
+    "title": "Water Lilies",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Monet%27s_Water_Lilies.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-20.jpg",
+    "title": "Stacks of Wheat (End of Day, Autumn)",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Monet_-_grainstacks-at-the-end-of-the-day-autumn.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-21.jpg",
+    "title": "The Beach at Sainte-Adresse",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_The_Beach_at_Sainte-Adresse_-_1933.439_-_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-07.jpg",
+    "title": "Paisagem de Santa Teresa",
+    "artist": "Eliseu Visconti",
+    "source": "https://commons.wikimedia.org/wiki/File:EliseuVisconti-P519-Paisagem_de_Santa_Teresa.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-22.jpg",
+    "title": "Étretat, The Beach and the Falaise d’Amont",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_%C3%89tretat,_The_Beach_and_the_Falaise_d%27Amont_-_1964.204_-_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-23.jpg",
+    "title": "The Departure of the Boats, Étretat",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_The_Departure_of_the_Boats,_%C3%89tretat_-_1922.428_-_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-24.jpg",
+    "title": "Stack of Wheat",
+    "artist": "Claude Monet",
+    "source": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Stack_of_Wheat_-_1983.29_-_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-08.jpg",
+    "title": "Paisagem de Ipanema",
+    "artist": "Eliseu Visconti",
+    "source": "https://commons.wikimedia.org/wiki/File:EliseuVisconti-P518-Paisagem_de_Ipanema.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-25.jpg",
+    "title": "Place du Havre, Paris",
+    "artist": "Camille Pissarro",
+    "source": "https://commons.wikimedia.org/wiki/File:Camille_Pissarro_-_Place_du_Havre,_Paris_-_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-26.jpg",
+    "title": "The Banks of the Marne in Winter",
+    "artist": "Camille Pissarro",
+    "source": "https://commons.wikimedia.org/wiki/File:Camille_Pissarro_-_Bords_de_la_Marne_en_Hiver.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-27.jpg",
+    "title": "The Crystal Palace",
+    "artist": "Camille Pissarro",
+    "source": "https://commons.wikimedia.org/wiki/File:Camille_Pissarro_-_Le_Crystal_Palace,_Londres.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-09.jpg",
+    "title": "Estrada do Mundo Novo com Pão de Açúcar ao Fundo",
+    "artist": "Abigail de Andrade",
+    "source": "https://commons.wikimedia.org/wiki/File:Abigail_de_Andrade,_1888,_Estrada_do_Mundo_Novo_com_P%C3%A3o_de_A%C3%A7%C3%BAcar_ao_Fundo.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  },
+  {
+    "file": "art-28.jpg",
+    "title": "Haymaking at Éragny",
+    "artist": "Camille Pissarro",
+    "source": "https://commons.wikimedia.org/wiki/File:Camille_Pissarro,_Haymaking_at_%C3%89ragny,_1892,_1961.791,_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-29.jpg",
+    "title": "A Turn in the Road",
+    "artist": "Alfred Sisley",
+    "source": "https://commons.wikimedia.org/wiki/File:Alfred_Sisley_-_A_Turn_in_the_Road_-_1947.112_-_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "art-30.jpg",
+    "title": "The Seine at Port-Marly, Piles of Sand",
+    "artist": "Alfred Sisley",
+    "source": "https://commons.wikimedia.org/wiki/File:Alfred_Sisley_-_The_Seine_at_Port-Marly,_Piles_of_Sand_-_1933.1177_-_Art_Institute_of_Chicago.jpg",
+    "license": "Public domain",
+    "collection": "Art Institute of Chicago"
+  },
+  {
+    "file": "br-10.jpg",
+    "title": "Trecho de paisagem",
+    "artist": "Abigail de Andrade",
+    "source": "https://commons.wikimedia.org/wiki/File:Abigail_de_Andrade_-_Trecho_de_paisagem.jpg",
+    "license": "Public domain",
+    "collection": "Arte brasileira",
+    "brazilian": true
+  }
+]

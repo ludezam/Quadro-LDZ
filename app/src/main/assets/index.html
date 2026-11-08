@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quadro LDZ</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#ede9df;color:#292c28;font:18px Arial,sans-serif}main{height:100vh;padding:5vh 5vw;display:grid;grid-template-columns:1.7fr 1fr;gap:4vw}figure{margin:0;min-width:0;display:flex;flex-direction:column;justify-content:center}.frame{background:#e5dfd1;padding:18px;box-shadow:0 10px 35px #302b2019;height:70vh;display:flex;align-items:center;justify-content:center}#art{width:100%;height:100%;object-fit:contain}figcaption{font-size:12px;line-height:1.6;margin-top:14px;color:#66685e}aside{display:flex;flex-direction:column;justify-content:center;min-width:0}.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:#73786c}h1{font:normal clamp(50px,9vw,150px) Georgia,serif;margin:10px 0;letter-spacing:-.06em}#date{font:24px Georgia,serif;text-transform:capitalize}.weather{border-top:1px solid #bbbcb0;border-bottom:1px solid #bbbcb0;margin:25px 0;padding:22px 0}#temperature{font:48px Georgia,serif}#forecast,#status{font-size:13px;line-height:1.7;color:#62675d}nav{display:flex;gap:8px;flex-wrap:wrap}button,input{font:inherit;border:1px solid #a4a898;border-radius:4px;padding:12px;background:#f5f2ea;color:#292c28}button{cursor:pointer;font-size:14px}button:focus,input:focus{outline:4px solid #67794c;outline-offset:4px}#panel{position:fixed;inset:7vh 10vw;background:#f5f2ea;box-shadow:0 0 0 100vw #181d18b8;padding:30px;overflow:auto;z-index:3}#panel[hidden]{display:none}h2{font:30px Georgia,serif;margin-top:0}input{width:100%;margin:10px 0}#results{display:flex;flex-direction:column;gap:12px;margin:12px 0}.help{font-size:13px;color:#62675d;line-height:1.7}#message{font-size:14px;min-height:20px}a{color:inherit}
+
+:root{--paper:#ede7da;--ink:#303129;--muted:#65665b;--line:#b7b4a6;--focus:#667747;--surface:#e4ddce}
+body.night{--paper:#303129;--ink:#ede7da;--muted:#c4beaf;--line:#6a695e;--focus:#c4d2a4;--surface:#38392f}
+body{background-color:var(--paper);color:var(--ink);background-image:radial-gradient(ellipse at 15% 25%,#b5a7810b,transparent 65%),radial-gradient(ellipse at 85% 75%,#fff7e50a,transparent 60%)}
+.frame{background:var(--surface)}figcaption,.eyebrow,#forecast,#status,.help{color:var(--muted)}
+.weather{border-color:var(--line)}button,input,#panel{color:var(--ink);background:var(--paper);border-color:var(--line)}
+button:focus,input:focus{outline-color:var(--focus)}#status{font-size:12px;margin-top:8px}#status[hidden]{display:none}
+</style>
+<main>
+ <figure><div class="frame"><img id="art" alt="Pintura do Art Institute of Chicago"></div><figcaption id="caption">ART INSTITUTE OF CHICAGO · Carregando a seleção de pinturas…</figcaption></figure>
+ <aside><div class="eyebrow">Quadro LDZ · um tempo para olhar</div><h1 id="clock">--:--</h1><div id="date"></div>
+ <section class="weather"><div class="eyebrow" id="city">Escolha sua cidade</div><div id="temperature">—</div><div id="forecast">O clima aparecerá aqui.</div><div id="status" role="status" hidden></div></section>
+ <nav><button id="cityButton">Cidade</button><button id="next">Outra pintura</button><button id="theme" aria-pressed="false">Modo escuro</button></nav>
+ </aside>
+</main>
+<section id="panel" hidden role="dialog" aria-modal="true" aria-labelledby="panelTitle"><h2 id="panelTitle"></h2><div id="panelBody"></div><p id="message" role="status"></p><button id="close">Voltar ao quadro</button></section>
+<script>
+'use strict';
+const el=id=>document.getElementById(id);
+function read(key){try{return JSON.parse(localStorage.getItem(key))}catch(e){return null}}
+function save(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){}}
+let city=read('city'), weatherSequence=0, lastFocus=null, artIndex=0;
+async function json(url){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),15000);try{const response=await fetch(url,{signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);return await response.json()}finally{clearTimeout(timer)}}
+function tick(){const now=new Date(),options=city&&city.timezone?{timeZone:city.timezone}:{};el('clock').textContent=now.toLocaleTimeString('pt-BR',Object.assign({hour:'2-digit',minute:'2-digit'},options));el('date').textContent=now.toLocaleDateString('pt-BR',Object.assign({weekday:'long',day:'numeric',month:'long'},options))}tick();setInterval(tick,1000);
+function describe(code){if(code===0)return 'Céu limpo';if(code<=3)return 'Entre nuvens';if(code<=48)return 'Nevoeiro';if(code<=67)return 'Chuva';if(code<=77)return 'Neve';if(code<=82)return 'Pancadas de chuva';if(code<=86)return 'Pancadas de neve';return 'Trovoadas'}
+function showWeather(data,stale){const w=data.current,d=data.daily;el('temperature').textContent=Math.round(w.temperature_2m)+'°';el('forecast').textContent=describe(w.weather_code)+' · '+Math.round(d.temperature_2m_min[0])+'° / '+Math.round(d.temperature_2m_max[0])+'° · Chuva '+d.precipitation_probability_max[0]+'%';el('status').hidden=!stale;el('status').textContent=stale?'Clima salvo · aguardando atualização':''}
+async function weather(){if(!city)return;const seq=++weatherSequence,selected=city;el('city').textContent=city.name+' · '+(city.admin1||city.country);const cached=read('weather');el('temperature').textContent='—';el('forecast').textContent='Consultando previsão…';el('status').textContent='';el('status').hidden=true;if(cached&&cached.cityId===city.id)showWeather(cached,true);try{const data=await json('https://api.open-meteo.com/v1/forecast?latitude='+selected.latitude+'&longitude='+selected.longitude+'&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=1');if(seq!==weatherSequence)return;data.savedAt=Date.now();data.cityId=selected.id;save('weather',data);showWeather(data,false)}catch(e){if(seq===weatherSequence){el('status').hidden=false;el('status').textContent='Sem atualização do clima. '+(cached&&cached.cityId===selected.id?'Mostrando dados salvos.':'Verifique a conexão.')}}}
+let offlineArt=[];
+let artDeadline=Date.now()+15*60*1000;
+function loadArtImage(url){return new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(Error('Imagem indisponível'));image.src=url})}
+async function painting(){
+ if(el('next').disabled)return;
+ el('next').disabled=true;
+ try{
+  if(!offlineArt.length)offlineArt=await json('art/catalog.json');
+  for(let attempt=0;attempt<offlineArt.length;attempt++){
+   const a=offlineArt[artIndex++%offlineArt.length];
+   try{const image=await loadArtImage('art/'+a.file);el('art').src=image.src;el('art').alt=a.title+' — '+a.artist;el('caption').textContent=a.title+' · '+a.artist+' | '+(a.collection||'Art Institute of Chicago');save('artIndex',artIndex%offlineArt.length);artDeadline=Date.now()+15*60*1000;return}catch(e){}
+  }
+  throw Error('Coleção indisponível');
+ }catch(e){el('caption').textContent='Não foi possível abrir a coleção. Tente outra pintura.'}
+ finally{el('next').disabled=false}
+}
+function panel(title){lastFocus=document.activeElement;el('panelTitle').textContent=title;el('panelBody').replaceChildren();el('message').textContent='';el('panel').hidden=false}
+window.closePanel=function(){if(el('panel').hidden){panel('Sair do painel?');const b=document.createElement('p');b.textContent='Use o botão Início do controle para sair. Voltar fecha este menu.';el('panelBody').append(b);el('close').focus();return}el('panel').hidden=true;if(lastFocus)lastFocus.focus()};el('close').onclick=window.closePanel;
+function cityPanel(){panel('Onde fica seu quadro?');el('panelBody').innerHTML='<label for="query">Cidade</label><input id="query" placeholder="Ex.: Campinas"><button id="search">Buscar cidade</button><div id="results"></div><p class="help">Localização por nome, sem GPS. Clima: Open-Meteo · CC BY 4.0. Dados geográficos: GeoNames.</p>';let searchSequence=0;el('search').onclick=async()=>{const query=el('query').value.trim();if(query.length<2){el('message').textContent='Digite pelo menos duas letras.';return}const seq=++searchSequence;el('message').textContent='Buscando…';el('results').replaceChildren();try{const data=await json('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(query)+'&count=6&language=pt&format=json');if(seq!==searchSequence||!el('results'))return;el('message').textContent=data.results?'Selecione a cidade:':'Nenhuma cidade encontrada.';(data.results||[]).forEach(result=>{const b=document.createElement('button');b.textContent=result.name+' · '+(result.admin1||'')+' · '+result.country;b.onclick=()=>{city=result;save('city',city);window.closePanel();tick();weather()};el('results').append(b)});if(el('results').firstChild)el('results').firstChild.focus()}catch(e){el('message').textContent='Não foi possível buscar. Verifique a conexão.'}};el('query').onkeydown=e=>{if(e.key==='Enter')el('search').click()};el('query').focus()}
+el('cityButton').onclick=cityPanel;el('next').onclick=painting;
+function setTheme(dark){document.body.classList.toggle('night',dark);el('theme').textContent=dark?'Modo claro':'Modo escuro';el('theme').setAttribute('aria-pressed',String(dark));save('night',dark)}
+el('theme').onclick=()=>setTheme(!document.body.classList.contains('night'));setTheme(!!read('night'));
+artIndex=Number(read('artIndex'))||0;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();window.closePanel()}if(el('panel').hidden||!['ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key)||document.activeElement.tagName==='INPUT')return;const items=Array.from(el('panel').querySelectorAll('input,button')).filter(n=>!n.disabled);const index=items.indexOf(document.activeElement);e.preventDefault();items[(index+(e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:1)+items.length)%items.length].focus()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){tick();weather();if(Date.now()>=artDeadline)painting()}});
+window.addEventListener('online',weather);setInterval(weather,30*60*1000);setInterval(()=>{if(!document.hidden&&Date.now()>=artDeadline)painting()},1000);painting();if(city)weather();else cityPanel();
+</script>
+</html>
