@@ -24,6 +24,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
       - name: Instalar SDK 34
         shell: pwsh
         run: sdkmanager 'platforms;android-34' 'build-tools;34.0.0'
@@ -35,3 +37,4 @@ jobs:
           name: Quadro-LDZ-desenvolvimento
           path: outputs/Quadro-LDZ-0.3.0-teste.apk
           if-no-files-found: error
+
