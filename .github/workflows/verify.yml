@@ -14,6 +14,7 @@ jobs:
         with:
           node-version: '22'
       - run: node tools/verify-panel.cjs
+      - run: node tools/verify-paint.cjs
   build:
     needs: verify
     runs-on: windows-latest
@@ -32,9 +33,19 @@ jobs:
       - name: Compilar e verificar APK de desenvolvimento
         shell: pwsh
         run: ./build-apk.ps1
+      - name: Testar versões e redirecionamentos
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory build/update-tests -Force | Out-Null
+          & "$env:JAVA_HOME/bin/javac.exe" -d build/update-tests app/src/main/java/br/com/galeria/painel/ReleaseVersion.java app/src/main/java/br/com/galeria/painel/UpdatePolicy.java tools/ReleaseVersionTest.java tools/UpdatePolicyTest.java
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:JAVA_HOME/bin/java.exe" -cp build/update-tests ReleaseVersionTest
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:JAVA_HOME/bin/java.exe" -cp build/update-tests UpdatePolicyTest
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         with:
           name: Quadro-LDZ-desenvolvimento
-          path: outputs/Quadro-LDZ-0.3.0-teste.apk
+          path: outputs/Quadro-LDZ-1.1.apk
           if-no-files-found: error
 

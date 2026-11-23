@@ -11,7 +11,7 @@
 
 ## Ainda não validado
 
-- TCL 43S6500 com Android 9 e outros fabricantes/modelos.
+- Outros fabricantes/modelos além das TVs TCL/UnionTV utilizadas.
 - Tablets, versões superiores ao Android 11 e diferentes WebViews.
 - Execução contínua por vários dias e comportamento após suspensão profunda da TV.
 - Todos os teclados virtuais e caminhos de foco de controles remotos.
@@ -28,12 +28,20 @@ O manifesto exige Android 9 ou superior e não estabelece versão máxima. Isso 
 5. Conferir troca manual e automática após 15 minutos com o app aberto.
 6. Desconectar a rede: pinturas e relógio devem continuar; o clima salvo deve ser identificado.
 7. Reconectar e conferir atualização do clima.
-8. Sair pelo botão Início; Voltar abre/fecha o diálogo de orientação no app.
+8. Sair pelo botão Início; Voltar fecha o painel de cidade ou abre o menu nativo de saída.
 
 ## Limitações conhecidas
 
 - Busca da cidade e clima exigem internet. Não há GPS, conta, música ou YouTube.
 - A versão gratuita do Open-Meteo destina-se ao uso não comercial e pode ter limites de serviço.
 - O app mantém a tela acordada enquanto está aberto; não controla brilho físico, carga ou desligamento da TV.
-- Não há favoritos, escolha de coleção, intervalo configurável ou atualização automática do APK.
+- Não há favoritos, escolha de coleção, intervalo configurável ou instalação silenciosa de APKs.
 - Arte e horários são atualizados enquanto o app está visível; o comportamento em suspensão depende do Android e do fabricante.
+
+## Validação de 1.1.0
+
+- Testes do efeito: primeira obra imediata, duração de quatro segundos, resolução limitada do canvas, cancelamento e movimento reduzido.
+- Testes Java: comparação numérica de versões, ID fixo do repositório, novo nome/conta e validação dos destinos de redirecionamento.
+- Compilação e assinatura verificadas com SDK 34/JDK 17, mínimo Android 9.
+- A compilação de teste 0.4.0 foi instalada na UnionTV com Android 9 e aprovada pelo usuário. A publicação 1.1 usa identificador Android 1.1.0 e versionCode 5, preservando a assinatura e a implementação testada.
+- Ainda não observado: download de uma versão futura, autorização e confirmação do instalador, e renomeação real do repositório. As políticas de versão e redirecionamento possuem testes automatizados. A função exige um único APK universal identificado como Quadro na release e a mesma assinatura da instalação atual.

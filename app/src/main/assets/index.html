@@ -11,15 +11,16 @@ body{background-color:var(--paper);color:var(--ink);background-image:radial-grad
 .frame{background:var(--surface)}figcaption,.eyebrow,#forecast,#status,.help{color:var(--muted)}
 .weather{border-color:var(--line)}button,input,#panel{color:var(--ink);background:var(--paper);border-color:var(--line)}
 button:focus,input:focus{outline-color:var(--focus)}#status{font-size:12px;margin-top:8px}#status[hidden]{display:none}
-</style>
+#artStage{position:relative;width:100%;height:100%;min-width:0}#art{display:block}#paintMask{position:absolute;pointer-events:none}#paintMask[hidden]{display:none}</style>
 <main>
- <figure><div class="frame"><img id="art" alt="Pintura do Art Institute of Chicago"></div><figcaption id="caption">ART INSTITUTE OF CHICAGO · Carregando a seleção de pinturas…</figcaption></figure>
+ <figure><div class="frame"><div id="artStage"><img id="art" alt="Pintura da coleção"><canvas id="paintMask" hidden aria-hidden="true"></canvas></div></div><figcaption id="caption">ART INSTITUTE OF CHICAGO · Carregando a seleção de pinturas…</figcaption></figure>
  <aside><div class="eyebrow">Quadro LDZ · um tempo para olhar</div><h1 id="clock">--:--</h1><div id="date"></div>
  <section class="weather"><div class="eyebrow" id="city">Escolha sua cidade</div><div id="temperature">—</div><div id="forecast">O clima aparecerá aqui.</div><div id="status" role="status" hidden></div></section>
  <nav><button id="cityButton">Cidade</button><button id="next">Outra pintura</button><button id="theme" aria-pressed="false">Modo escuro</button></nav>
  </aside>
 </main>
 <section id="panel" hidden role="dialog" aria-modal="true" aria-labelledby="panelTitle"><h2 id="panelTitle"></h2><div id="panelBody"></div><p id="message" role="status"></p><button id="close">Voltar ao quadro</button></section>
+<script src="paint-reveal.js"></script>
 <script>
 'use strict';
 const el=id=>document.getElementById(id);
@@ -41,7 +42,7 @@ async function painting(){
   if(!offlineArt.length)offlineArt=await json('art/catalog.json');
   for(let attempt=0;attempt<offlineArt.length;attempt++){
    const a=offlineArt[artIndex++%offlineArt.length];
-   try{const image=await loadArtImage('art/'+a.file);el('art').src=image.src;el('art').alt=a.title+' — '+a.artist;el('caption').textContent=a.title+' · '+a.artist+' | '+(a.collection||'Art Institute of Chicago');save('artIndex',artIndex%offlineArt.length);artDeadline=Date.now()+15*60*1000;return}catch(e){}
+   try{const image=await loadArtImage('art/'+a.file);if(window.PaintReveal)await window.PaintReveal.show(el('art'),image,el('paintMask'),el('artStage'));else el('art').src=image.src;el('art').alt=a.title+' — '+a.artist;el('caption').textContent=a.title+' · '+a.artist+' | '+(a.collection||'Art Institute of Chicago');save('artIndex',artIndex%offlineArt.length);artDeadline=Date.now()+15*60*1000;return}catch(e){}
   }
   throw Error('Coleção indisponível');
  }catch(e){el('caption').textContent='Não foi possível abrir a coleção. Tente outra pintura.'}
@@ -51,7 +52,7 @@ function panel(title){lastFocus=document.activeElement;el('panelTitle').textCont
 window.closePanel=function(){if(el('panel').hidden){panel('Sair do painel?');const b=document.createElement('p');b.textContent='Use o botão Início do controle para sair. Voltar fecha este menu.';el('panelBody').append(b);el('close').focus();return}el('panel').hidden=true;if(lastFocus)lastFocus.focus()};el('close').onclick=window.closePanel;
 function cityPanel(){panel('Onde fica seu quadro?');el('panelBody').innerHTML='<label for="query">Cidade</label><input id="query" placeholder="Ex.: Campinas"><button id="search">Buscar cidade</button><div id="results"></div><p class="help">Localização por nome, sem GPS. Clima: Open-Meteo · CC BY 4.0. Dados geográficos: GeoNames.</p>';let searchSequence=0;el('search').onclick=async()=>{const query=el('query').value.trim();if(query.length<2){el('message').textContent='Digite pelo menos duas letras.';return}const seq=++searchSequence;el('message').textContent='Buscando…';el('results').replaceChildren();try{const data=await json('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(query)+'&count=6&language=pt&format=json');if(seq!==searchSequence||!el('results'))return;el('message').textContent=data.results?'Selecione a cidade:':'Nenhuma cidade encontrada.';(data.results||[]).forEach(result=>{const b=document.createElement('button');b.textContent=result.name+' · '+(result.admin1||'')+' · '+result.country;b.onclick=()=>{city=result;save('city',city);window.closePanel();tick();weather()};el('results').append(b)});if(el('results').firstChild)el('results').firstChild.focus()}catch(e){el('message').textContent='Não foi possível buscar. Verifique a conexão.'}};el('query').onkeydown=e=>{if(e.key==='Enter')el('search').click()};el('query').focus()}
 el('cityButton').onclick=cityPanel;el('next').onclick=painting;
-function setTheme(dark){document.body.classList.toggle('night',dark);el('theme').textContent=dark?'Modo claro':'Modo escuro';el('theme').setAttribute('aria-pressed',String(dark));save('night',dark)}
+function setTheme(dark){if(window.PaintReveal)window.PaintReveal.cancel();document.body.classList.toggle('night',dark);el('theme').textContent=dark?'Modo claro':'Modo escuro';el('theme').setAttribute('aria-pressed',String(dark));save('night',dark)}
 el('theme').onclick=()=>setTheme(!document.body.classList.contains('night'));setTheme(!!read('night'));
 artIndex=Number(read('artIndex'))||0;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();window.closePanel()}if(el('panel').hidden||!['ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key)||document.activeElement.tagName==='INPUT')return;const items=Array.from(el('panel').querySelectorAll('input,button')).filter(n=>!n.disabled);const index=items.indexOf(document.activeElement);e.preventDefault();items[(index+(e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:1)+items.length)%items.length].focus()});

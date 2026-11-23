@@ -1,8 +1,8 @@
-# Privacidade — Quadro LDZ 0.3.0
+# Privacidade — Quadro LDZ 1.1.0
 
-Atualizado em 8 de novembro de 2026.
+Atualizado em 22 de novembro de 2026.
 
-O aplicativo não exige conta, não inclui anúncios, analytics ou rastreadores próprios e não acessa GPS, câmera, microfone, contatos ou arquivos pessoais. A permissão declarada é acesso à internet. As pinturas são arquivos locais incluídos no APK.
+O aplicativo não exige conta, não inclui anúncios, analytics ou rastreadores próprios e não acessa GPS, câmera, microfone, contatos ou arquivos pessoais. As permissões declaradas são acesso à internet e solicitação de instalação de pacotes, usada somente na atualização iniciada pelo usuário. As pinturas são arquivos locais incluídos no APK.
 
 ## Dados locais
 
@@ -13,6 +13,12 @@ O armazenamento local do WebView guarda a cidade escolhida (incluindo coordenada
 Ao pesquisar uma cidade, o termo digitado é enviado por HTTPS ao serviço de geocodificação do Open-Meteo. Para obter o clima, suas coordenadas são enviadas à API de previsão do Open-Meteo na abertura, ao retornar ao app, recuperar a conexão e a cada 30 minutos enquanto o app está ativo. Esses serviços recebem o endereço IP da conexão e os dados normais de uma requisição de rede.
 
 Consulte a [política de privacidade do Open-Meteo](https://open-meteo.com/en/terms). Não são feitas consultas ao museu ou ao Wikimedia durante o uso normal. `galeria.example` é uma origem HTTPS sintética interceptada pelo aplicativo para servir os arquivos internos; não hospeda um serviço deste projeto.
+
+## Busca de atualizações
+
+Somente quando o usuário escolhe Buscar atualizações, o aplicativo consulta por HTTPS a API pública do GitHub (`api.github.com/repositories/1450351190`, seguido da release mais recente do nome atual desse mesmo repositório). A resposta é comparada à versão instalada no próprio aparelho. Não são enviados cidade, coordenadas, preferências ou credenciais do GitHub; a requisição expõe o IP da conexão e um identificador genérico do aplicativo. Se houver uma nova versão, o APK é baixado de github.com e de seus destinos HTTPS githubusercontent.com para o cache privado do app. O instalador recebe acesso temporário somente a esse arquivo. O download é iniciado pela busca manual; a instalação exige confirmação do Android. Não há consultas periódicas de atualização ou instalação silenciosa. O arquivo de atualização pode permanecer no cache até a próxima atualização, a limpeza dos dados ou a desinstalação.
+
+Consulte a [política de privacidade do GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
 
 ## Relatos de problemas
 

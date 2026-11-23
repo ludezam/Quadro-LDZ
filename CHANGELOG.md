@@ -1,5 +1,15 @@
 # Histórico de versões
 
+## 1.1 (1.1.0) — 2026-11-22
+
+- Obras reveladas com pinceladas em uma transição de quatro segundos, sem animar relógio ou clima.
+- Primeira obra imediata, respeito a movimento reduzido e finalização segura ao sair ou alterar o tema.
+- Menu nativo de saída com Buscar atualizações, Voltar ao quadro e Sair.
+- Consulta sob demanda à release estável mais recente de ludezam/Quadro-LDZ, com comparação numérica de versões e tratamento de falhas.
+- Download direto do APK e abertura do instalador Android, com autorização de fonte desconhecida quando necessária e confirmação final do sistema.
+- Repositório localizado pelo ID fixo, suportando renomeação/transferência e até cinco redirecionamentos HTTPS.
+- Verificação de tamanho, digest quando disponível, pacote, versão, Android mínimo e mesma assinatura antes de encaminhar o APK ao instalador.
+
 ## 0.3.0 — 2026-11-08
 
 - Ícone PNG e banner com pintura de Almeida Júnior e título Quadro LDZ em Georgia.

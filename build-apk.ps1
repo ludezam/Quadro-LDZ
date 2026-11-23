@@ -1,4 +1,4 @@
-param([string]$ToolsConfig = (Join-Path $PSScriptRoot 'tools.local.json'))
+param([string]$ToolsConfig = (Join-Path $PSScriptRoot 'tools.local.json'), [string]$SigningKey = '')
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
@@ -46,7 +46,7 @@ $unsigned = Join-Path $work 'unsigned.apk'
 Write-Host 'Empacotando recursos Android...'
 Run-Native "$buildTools/aapt.exe" @('package', '-f', '-M', $manifestPath, '-S', "$source/res", '-A', "$source/assets",
     '-I', $androidJar, '-J', $generated, '-F', $unsigned, '--min-sdk-version', '28', '--target-sdk-version', '34',
-    '--version-code', '3', '--version-name', '0.3.0')
+    '--version-code', '5', '--version-name', '1.1.0')
 Write-Host 'Compilando Java...'
 $javaFiles = @(Get-ChildItem "$source/java", $generated -Recurse -Filter '*.java' | ForEach-Object { $_.FullName })
 Run-Native "$jdk/javac.exe" (@('-encoding', 'UTF-8', '-source', '8', '-target', '8', '-bootclasspath', "$androidJar;$buildTools/core-lambda-stubs.jar", '-d', $classes) + $javaFiles)
@@ -56,12 +56,12 @@ Run-Native "$buildTools/d8.bat" (@('--lib', $androidJar, '--min-api', '28', '--o
 Run-Native "$jdk/jar.exe" @('uf', $unsigned, '-C', $dex, 'classes.dex')
 $aligned = Join-Path $work 'aligned.apk'
 Run-Native "$buildTools/zipalign.exe" @('-f', '4', $unsigned, $aligned)
-$key = Join-Path $env:ANDROID_USER_HOME 'galeria-debug.keystore'
+$key = if ($SigningKey) { $SigningKey } else { Join-Path $env:ANDROID_USER_HOME 'galeria-debug.keystore' }
 if (!(Test-Path -LiteralPath $key)) {
     Run-Native "$jdk/keytool.exe" @('-genkeypair', '-keystore', $key, '-storepass', 'android', '-keypass', 'android',
         '-alias', 'androiddebugkey', '-dname', 'CN=Galeria Debug', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000', '-noprompt')
 }
-$apk = Join-Path $output 'Quadro-LDZ-0.3.0-teste.apk'
+$apk = Join-Path $output 'Quadro-LDZ-1.1.apk'
 Write-Host 'Assinando e verificando APK...'
 Run-Native "$buildTools/apksigner.bat" @('sign', '--ks', $key, '--ks-key-alias', 'androiddebugkey', '--ks-pass', 'pass:android', '--key-pass', 'pass:android', '--out', $apk, $aligned)
 Run-Native "$buildTools/apksigner.bat" @('verify', '--verbose', $apk)

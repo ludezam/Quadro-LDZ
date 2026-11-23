@@ -10,6 +10,8 @@ Um quadro digital com **arte, hora e clima** para Android TV e tablets na horizo
 
 - **40 pinturas offline**, com 30 obras do Art Institute of Chicago e dez brasileiras de Almeida Júnior, Benedito Calixto, Antônio Parreiras, Eliseu Visconti e Abigail de Andrade.
 - Uma nova obra a cada **15 minutos**, além do botão de troca manual.
+- Transição de quatro segundos com revelação em pinceladas a partir da segunda obra; hora e clima permanecem estáveis.
+- Busca de atualizações no GitHub pelo menu de saída, acessível com Voltar no controle.
 - Hora e data no fuso da cidade escolhida.
 - Temperatura atual, condição do tempo, mínima, máxima e probabilidade de chuva.
 - Busca da cidade na primeira abertura e alteração pelo menu.
@@ -39,11 +41,11 @@ Requisitos: **Android 9 ou superior**, aparelho em orientação horizontal e Web
 Com ADB já configurado e o aparelho autorizado:
 
 ```text
-adb install -r Quadro-LDZ-0.3.0-teste.apk
+adb install -r Quadro-LDZ-1.1.apk
 adb shell am start -n br.com.galeria.painel/.MainActivity
 ```
 
-O APK publicado usa assinatura de desenvolvimento, para distribuição direta e avaliação. A chave privada não é distribuída. Instalações compiladas por terceiros ou por CI podem usar outra assinatura e não atualizar a instalação existente. Não há atualização automática ou publicação na Play Store.
+O APK publicado usa assinatura de desenvolvimento, para distribuição direta e avaliação. A chave privada não é distribuída. Instalações compiladas por terceiros ou por CI podem usar outra assinatura e não atualizar a instalação existente. As atualizações são iniciadas pelo menu do app e confirmadas pelo Android; não há instalação silenciosa nem publicação na Play Store.
 
 ## Uso
 
@@ -53,14 +55,16 @@ O APK publicado usa assinatura de desenvolvimento, para distribuição direta e 
 | Outra pintura | Avançar na coleção offline |
 | Modo escuro / Modo claro | Trocar e salvar o tema |
 | Setas e OK | Navegar e selecionar na TV |
-| Voltar | Fechar o diálogo ou exibir orientação de saída |
+| Voltar | Fechar o diálogo aberto ou abrir o menu de saída e atualizações |
 | Início do controle | Sair para o launcher da TV |
 
 As obras brasileiras aparecem intercaladas com as demais. Ao retornar ao app depois do prazo de rotação, ele troca a pintura; na próxima abertura, continua a sequência salva. O clima é consultado na abertura, no retorno ao app, na reconexão e a cada 30 minutos enquanto ativo. Falhas de atualização são identificadas na tela.
 
 ## Compatibilidade e estado da versão
 
-**Versão pública inicial: 0.3.0.** Instalação, telas e ícone foram validados em TCL Android 11. A versão mínima declarada é Android 9, mas a TCL 43S6500 com Android 9, tablets, Androids superiores e outros fabricantes ainda não foram testados em aparelho. Não há versão máxima declarada.
+**Versão: 1.1 (identificador Android 1.1.0).** A versão pública anterior é 0.3.0, com instalação e inicialização também confirmadas na UnionTV Android 9, além da validação na TCL Android 11. As alterações foram instaladas na UnionTV com Android 9 e aprovadas pelo usuário. Os testes automatizados de lógica e a compilação também passaram. O fluxo completo de instalação de uma atualização futura ainda não foi observado. Não há versão máxima declarada.
+
+No menu de saída, **Buscar atualizações** consulta somente as releases estáveis do repositório oficial. A consulta usa o ID fixo do repositório e descobre seu nome atual, continuando válida após renomeação ou transferência. Redirecionamentos HTTPS são seguidos até cinco saltos. Ao encontrar uma release mais nova, o app baixa o APK diretamente e abre o instalador do Android. Na primeira vez, o sistema pode pedir autorização para instalar aplicativos por esta fonte. A confirmação final da instalação continua com o usuário. Não é necessário navegador. Falhas de rede, indisponibilidade e limites da API são informados sem interromper o painel.
 
 O app mantém a tela acordada enquanto aberto. Não controla brilho físico, energia, carga ou inicialização automática da TV. Não há favoritos, seleção de coleção ou intervalo configurável nesta versão.
 
