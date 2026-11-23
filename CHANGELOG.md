@@ -1,5 +1,10 @@
 # Histórico de versões
 
+## 1.1.1 — 2026-11-22
+
+- Pinceladas diagonais que avançam do canto superior esquerdo ao inferior direito, mantendo a transição de quatro segundos.
+- APK com versionCode 6, compatível com a atualização pelo menu da versão 1.1.
+
 ## 1.1 (1.1.0) — 2026-11-22
 
 - Obras reveladas com pinceladas em uma transição de quatro segundos, sem animar relógio ou clima.

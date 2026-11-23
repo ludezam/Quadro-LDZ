@@ -45,3 +45,9 @@ O manifesto exige Android 9 ou superior e não estabelece versão máxima. Isso 
 - Compilação e assinatura verificadas com SDK 34/JDK 17, mínimo Android 9.
 - A compilação de teste 0.4.0 foi instalada na UnionTV com Android 9 e aprovada pelo usuário. A publicação 1.1 usa identificador Android 1.1.0 e versionCode 5, preservando a assinatura e a implementação testada.
 - Ainda não observado: download de uma versão futura, autorização e confirmação do instalador, e renomeação real do repositório. As políticas de versão e redirecionamento possuem testes automatizados. A função exige um único APK universal identificado como Quadro na release e a mesma assinatura da instalação atual.
+
+## Validação de 1.1.1
+
+- Pinceladas diagonais: avanço positivo nos dois eixos e cobertura da imagem em formatos horizontal, vertical e quadrado verificados por teste automatizado.
+- Mantidos os testes de duração, cancelamento, movimento reduzido, painel e política de atualização.
+- Avaliação visual e instalação pelo atualizador da TV ficam para o teste do usuário após a publicação.

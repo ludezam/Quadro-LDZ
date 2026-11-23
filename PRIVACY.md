@@ -1,4 +1,4 @@
-# Privacidade — Quadro LDZ 1.1.0
+# Privacidade — Quadro LDZ 1.1.1
 
 Atualizado em 22 de novembro de 2026.
 

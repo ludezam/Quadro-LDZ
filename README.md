@@ -41,7 +41,7 @@ Requisitos: **Android 9 ou superior**, aparelho em orientação horizontal e Web
 Com ADB já configurado e o aparelho autorizado:
 
 ```text
-adb install -r Quadro-LDZ-1.1.apk
+adb install -r Quadro-LDZ-1.1.1.apk
 adb shell am start -n br.com.galeria.painel/.MainActivity
 ```
 
@@ -62,7 +62,7 @@ As obras brasileiras aparecem intercaladas com as demais. Ao retornar ao app dep
 
 ## Compatibilidade e estado da versão
 
-**Versão: 1.1 (identificador Android 1.1.0).** A versão pública anterior é 0.3.0, com instalação e inicialização também confirmadas na UnionTV Android 9, além da validação na TCL Android 11. As alterações foram instaladas na UnionTV com Android 9 e aprovadas pelo usuário. Os testes automatizados de lógica e a compilação também passaram. O fluxo completo de instalação de uma atualização futura ainda não foi observado. Não há versão máxima declarada.
+**Versão: 1.1.1 (identificador Android 1.1.1).** A versão pública anterior é 0.3.0, com instalação e inicialização também confirmadas na UnionTV Android 9, além da validação na TCL Android 11. As alterações foram instaladas na UnionTV com Android 9 e aprovadas pelo usuário. Os testes automatizados de lógica e a compilação também passaram. O fluxo completo de instalação de uma atualização futura ainda não foi observado. Não há versão máxima declarada.
 
 No menu de saída, **Buscar atualizações** consulta somente as releases estáveis do repositório oficial. A consulta usa o ID fixo do repositório e descobre seu nome atual, continuando válida após renomeação ou transferência. Redirecionamentos HTTPS são seguidos até cinco saltos. Ao encontrar uma release mais nova, o app baixa o APK diretamente e abre o instalador do Android. Na primeira vez, o sistema pode pedir autorização para instalar aplicativos por esta fonte. A confirmação final da instalação continua com o usuário. Não é necessário navegador. Falhas de rede, indisponibilidade e limites da API são informados sem interromper o painel.
 
