@@ -46,7 +46,7 @@ $unsigned = Join-Path $work 'unsigned.apk'
 Write-Host 'Empacotando recursos Android...'
 Run-Native "$buildTools/aapt.exe" @('package', '-f', '-M', $manifestPath, '-S', "$source/res", '-A', "$source/assets",
     '-I', $androidJar, '-J', $generated, '-F', $unsigned, '--min-sdk-version', '28', '--target-sdk-version', '34',
-    '--version-code', '6', '--version-name', '1.1.1')
+    '--version-code', '8', '--version-name', '1.1.3')
 Write-Host 'Compilando Java...'
 $javaFiles = @(Get-ChildItem "$source/java", $generated -Recurse -Filter '*.java' | ForEach-Object { $_.FullName })
 Run-Native "$jdk/javac.exe" (@('-encoding', 'UTF-8', '-source', '8', '-target', '8', '-bootclasspath', "$androidJar;$buildTools/core-lambda-stubs.jar", '-d', $classes) + $javaFiles)
@@ -61,7 +61,7 @@ if (!(Test-Path -LiteralPath $key)) {
     Run-Native "$jdk/keytool.exe" @('-genkeypair', '-keystore', $key, '-storepass', 'android', '-keypass', 'android',
         '-alias', 'androiddebugkey', '-dname', 'CN=Galeria Debug', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000', '-noprompt')
 }
-$apk = Join-Path $output 'Quadro-LDZ-1.1.1.apk'
+$apk = Join-Path $output 'Quadro-LDZ-1.1.3.apk'
 Write-Host 'Assinando e verificando APK...'
 Run-Native "$buildTools/apksigner.bat" @('sign', '--ks', $key, '--ks-key-alias', 'androiddebugkey', '--ks-pass', 'pass:android', '--key-pass', 'pass:android', '--out', $apk, $aligned)
 Run-Native "$buildTools/apksigner.bat" @('verify', '--verbose', $apk)

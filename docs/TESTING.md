@@ -51,3 +51,17 @@ O manifesto exige Android 9 ou superior e não estabelece versão máxima. Isso 
 - Pinceladas diagonais: avanço positivo nos dois eixos e cobertura da imagem em formatos horizontal, vertical e quadrado verificados por teste automatizado.
 - Mantidos os testes de duração, cancelamento, movimento reduzido, painel e política de atualização.
 - Avaliação visual e instalação pelo atualizador da TV ficam para o teste do usuário após a publicação.
+
+## Validação de 1.1.2
+
+- Reproduzido no Android 9 da UnionTV: GET_SIGNING_CERTIFICATES sozinho retorna signingInfo nulo para arquivo de APK; combinado com GET_SIGNATURES retorna os certificados.
+- Executado o método verifyApk do código corrigido na TV: aceitou o APK 1.1.2 com os mesmos assinantes da instalação 0.4.0; recusou versão esperada divergente e APK sem assinatura.
+- Teste automatizado da transição atualizado para três segundos; direção diagonal, cobertura, cancelamento e movimento reduzido aprovados.
+- Testes do painel, versões e política de redirecionamento aprovados.
+- APK 1.1.2 (versionCode 7) instalado via ADB com -r na TV 192.168.1.3; instalação e abertura confirmadas. O fluxo completo de uma atualização futura pelo instalador ainda não foi observado.
+
+## Validação de 1.1.3
+
+- Teste de pinceladas horizontais alternadas com progressão de cima para baixo e cobertura em três formatos; duração de três segundos, cancelamento e movimento reduzido.
+- Mantidos os testes de painel, versões e redirecionamentos e a correção de assinaturas testada na TV na versão 1.1.2.
+- APK publicado para o usuário testar a atualização da 1.1.2 pelo menu da TV. A instalação desta versão não foi feita via ADB.

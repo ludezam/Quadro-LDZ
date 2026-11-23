@@ -26,30 +26,21 @@
   ctx.fillStyle = paper; ctx.fillRect(0, 0, canvas.width, canvas.height);
   image.src = incoming.src; canvas.hidden = false;
   ctx.globalCompositeOperation = 'destination-out'; ctx.lineCap = 'round';
-  // Advance along the image diagonal. Parallel brush tracks cover the entire
-  // rectangle as the wet edge travels from the top-left to the bottom-right.
-  const rows = 18, duration = 4000;
-  const length = Math.hypot(canvas.width, canvas.height);
-  const ux = canvas.width / length, uy = canvas.height / length;
-  const extent = canvas.width * canvas.height / length;
-  const band = extent * 2 / rows;
+  const rows = 18, band = canvas.height / rows, duration = 3000;
   function stroke(row, from, to) {
-   const track = -extent + band * (row + .5);
-   const across = p => track + Math.sin(p * 5 + row * 1.7) * band * .06;
-   const along = p => -band + p * (length + band * 2);
-   const x = (p, offset = 0) => ux * along(p) - uy * (across(p) + offset);
-   const y = (p, offset = 0) => uy * along(p) + ux * (across(p) + offset);
-   ctx.strokeStyle = '#000'; ctx.lineWidth = band * 1.13;
+   const leftToRight = row % 2 === 0;
+   const span = canvas.width + band * 2;
+   const x = p => leftToRight ? -band + p * span : canvas.width + band - p * span;
+   const y = p => band * (row + .5) + Math.sin(p * 5 + row * 1.7) * band * .12;
+   ctx.strokeStyle = '#000'; ctx.lineWidth = band * 1.3;
    ctx.beginPath(); ctx.moveTo(x(from), y(from)); ctx.lineTo(x(to), y(to)); ctx.stroke();
    // Uneven bristles extend the wet edge instead of using a rectangular wipe.
    ctx.lineWidth = Math.max(1, band * .12);
    for (let bristle = 0; bristle < 10; bristle++) {
     const offset = (bristle - 4.5) * band * .15;
     const trail = (bristle % 3) * .013;
-    const start = Math.max(0, from - trail), end = Math.max(0, to - trail);
-    if (end <= start) continue;
-    ctx.beginPath(); ctx.moveTo(x(start, offset), y(start, offset));
-    ctx.lineTo(x(end, offset), y(end, offset)); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x(Math.max(0, from - trail)), y(from) + offset);
+    ctx.lineTo(x(Math.max(0, to - trail)), y(to) + offset); ctx.stroke();
    }
   }
   return new Promise(resolve => {
@@ -70,12 +61,12 @@
     if (start === null) start = time;
     if (time - last >= 32) {
      last = time;
-     const next = Math.min(1, (time - start) / duration);
-     if (progress < next) {
-      for (let row = 0; row < rows; row++) stroke(row, progress, next);
-      progress = next;
+     const next = Math.min(rows, (time - start) / duration * rows);
+     while (progress < next) {
+      const row = Math.floor(progress), end = Math.min(row + 1, next);
+      stroke(row, progress - row, end - row); progress = end;
      }
-     if (next >= 1) { finish(); return; }
+     if (next >= rows) { finish(); return; }
     }
     frame = requestAnimationFrame(draw);
    }

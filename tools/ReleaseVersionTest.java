@@ -1,6 +1,10 @@
 import br.com.galeria.painel.ReleaseVersion;
 public class ReleaseVersionTest {
     public static void main(String[] args) {
+        check(ReleaseVersion.isNewer("v1.1.3", "1.1.2"));
+        check(!ReleaseVersion.isNewer("v1.1.3", "1.1.3"));
+        check(ReleaseVersion.isNewer("v1.1.2", "0.4.0"));
+        check(ReleaseVersion.isNewer("v1.1.2", "1.1.1"));
         check(ReleaseVersion.isNewer("v1.1.1", "1.1.0"));
         check(!ReleaseVersion.isNewer("v1.1.1", "1.1.1"));
         check(!ReleaseVersion.isNewer("v0.4.0", "0.4.0"));

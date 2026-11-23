@@ -15,7 +15,7 @@ node tools/verify-paint.cjs
 ./build-apk.ps1
 ```
 
-O resultado é `outputs/Quadro-LDZ-1.1.1.apk`. O script compila Java, gera DEX, empacota os recursos, alinha, assina e verifica o APK. São usadas pastas de trabalho novas em `build/manual` a cada execução; o SDK não é alterado.
+O resultado é `outputs/Quadro-LDZ-1.1.3.apk`. O script compila Java, gera DEX, empacota os recursos, alinha, assina e verifica o APK. São usadas pastas de trabalho novas em `build/manual` a cada execução; o SDK não é alterado.
 
 O script cria uma chave de desenvolvimento em `.android/galeria-debug.keystore` quando ela não existe. Essa pasta é ignorada pelo Git. A senha convencional de desenvolvimento no script não é uma credencial de produção. Guarde a chave local para continuar instalando atualizações sobre o mesmo app; um clone novo gera outra chave e não substitui uma instalação assinada com a chave anterior.
 

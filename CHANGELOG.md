@@ -1,5 +1,19 @@
 # Histórico de versões
 
+## 1.1.3 — 2026-11-22
+
+- Retorno às pinceladas horizontais alternadas, revelando a obra de cima para baixo.
+- Duração de três segundos e correção da leitura de assinaturas no Android 9 mantidas.
+- versionCode 8, para atualização direta da versão 1.1.2 instalada na TV.
+
+## 1.1.2 — 2026-11-22
+
+- Reduzida a duração da transição diagonal de quatro para três segundos.
+
+- Corrigida a coleta de certificados de APKs no Android 9, evitando a mensagem incorreta de APK sem assinatura válida.
+- Mantida a comparação obrigatória dos assinantes atuais com a instalação existente.
+- versionCode 7; a recuperação de instalações com o atualizador antigo exige uma instalação por ADB ou pelo instalador do Android.
+
 ## 1.1.1 — 2026-11-22
 
 - Pinceladas diagonais que avançam do canto superior esquerdo ao inferior direito, mantendo a transição de quatro segundos.

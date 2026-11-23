@@ -4,13 +4,13 @@
 
 Um quadro digital com **arte, hora e clima** para Android TV e tablets na horizontal. Visual inspirado em papel, leitura à distância e 40 pinturas incluídas no aplicativo, sem depender de uma central de automação.
 
-[Baixar APK](https://github.com/ludezam/Quadro-LDZ/releases/latest) · [Instalação](#instalação) · [Compilar](docs/BUILD.md) · [Créditos](THIRD_PARTY_NOTICES.md) · [Privacidade](PRIVACY.md)
+[Demonstração no navegador](https://ludezam.github.io/Quadro-LDZ/demo.html) · [Baixar APK](https://github.com/ludezam/Quadro-LDZ/releases/latest) · [Instalação](#instalação) · [Compilar](docs/BUILD.md) · [Créditos](THIRD_PARTY_NOTICES.md) · [Privacidade](PRIVACY.md)
 
 ## Recursos
 
 - **40 pinturas offline**, com 30 obras do Art Institute of Chicago e dez brasileiras de Almeida Júnior, Benedito Calixto, Antônio Parreiras, Eliseu Visconti e Abigail de Andrade.
 - Uma nova obra a cada **15 minutos**, além do botão de troca manual.
-- Transição de quatro segundos com revelação em pinceladas a partir da segunda obra; hora e clima permanecem estáveis.
+- Transição de três segundos, de cima para baixo, com revelação em pinceladas a partir da segunda obra; hora e clima permanecem estáveis.
 - Busca de atualizações no GitHub pelo menu de saída, acessível com Voltar no controle.
 - Hora e data no fuso da cidade escolhida.
 - Temperatura atual, condição do tempo, mínima, máxima e probabilidade de chuva.
@@ -20,6 +20,10 @@ Um quadro digital com **arte, hora e clima** para Android TV e tablets na horizo
 - Interface horizontal com navegação por controle remoto e suporte a toque.
 
 Não é necessário Home Assistant. Esta versão não inclui reprodução de música ou YouTube.
+
+## Demonstração
+
+Abra a [demonstração](https://ludezam.github.io/Quadro-LDZ/demo.html), ou baixe o repositório e abra demo.html no navegador. Ela usa três pinturas locais, relógio do dispositivo, temas e a transição real de três segundos. Cidade e clima são exemplos ilustrativos; não há consultas de previsão, coleta de dados nem instalação de APK pelo navegador.
 
 ## Aparência
 
@@ -41,7 +45,7 @@ Requisitos: **Android 9 ou superior**, aparelho em orientação horizontal e Web
 Com ADB já configurado e o aparelho autorizado:
 
 ```text
-adb install -r Quadro-LDZ-1.1.1.apk
+adb install -r Quadro-LDZ-1.1.3.apk
 adb shell am start -n br.com.galeria.painel/.MainActivity
 ```
 
@@ -62,7 +66,7 @@ As obras brasileiras aparecem intercaladas com as demais. Ao retornar ao app dep
 
 ## Compatibilidade e estado da versão
 
-**Versão: 1.1.1 (identificador Android 1.1.1).** A versão pública anterior é 0.3.0, com instalação e inicialização também confirmadas na UnionTV Android 9, além da validação na TCL Android 11. As alterações foram instaladas na UnionTV com Android 9 e aprovadas pelo usuário. Os testes automatizados de lógica e a compilação também passaram. O fluxo completo de instalação de uma atualização futura ainda não foi observado. Não há versão máxima declarada.
+**Versão: 1.1.3.** Android 9 ou superior, sem versão máxima declarada. Instalação e abertura confirmadas na UnionTV com Android 9 até a versão 1.1.2; versões anteriores também testadas na TCL Android 11. A correção da validação de assinaturas foi testada na TV. O fluxo completo de instalação de uma atualização pelo menu ainda aguarda o teste do usuário.
 
 No menu de saída, **Buscar atualizações** consulta somente as releases estáveis do repositório oficial. A consulta usa o ID fixo do repositório e descobre seu nome atual, continuando válida após renomeação ou transferência. Redirecionamentos HTTPS são seguidos até cinco saltos. Ao encontrar uma release mais nova, o app baixa o APK diretamente e abre o instalador do Android. Na primeira vez, o sistema pode pedir autorização para instalar aplicativos por esta fonte. A confirmação final da instalação continua com o usuário. Não é necessário navegador. Falhas de rede, indisponibilidade e limites da API são informados sem interromper o painel.
 

@@ -1,0 +1,39 @@
+name: Publicar demonstração
+on:
+  push:
+    branches: [main]
+    paths:
+      - demo.html
+      - .github/workflows/demo-pages.yml
+      - app/src/main/assets/art/pourville.jpg
+      - app/src/main/assets/art/art-03.jpg
+      - app/src/main/assets/art/br-01.jpg
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Preparar demonstração leve
+        run: |
+          mkdir -p _site/app/src/main/assets/art
+          cp demo.html _site/demo.html
+          cp demo.html _site/index.html
+          cp app/src/main/assets/art/{pourville,art-03,br-01}.jpg _site/app/src/main/assets/art/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

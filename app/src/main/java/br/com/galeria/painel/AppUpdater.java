@@ -146,7 +146,10 @@ final class AppUpdater {
         });
     }
     private void verifyApk(File file, String version) throws Exception {
-        PackageInfo apk = activity.getPackageManager().getPackageArchiveInfo(file.getAbsolutePath(), PackageManager.GET_SIGNING_CERTIFICATES);
+        // Android 9 only collects archive certificates when GET_SIGNATURES is also set.
+        // Keep GET_SIGNING_CERTIFICATES to compare the actual current signers below.
+        PackageInfo apk = activity.getPackageManager().getPackageArchiveInfo(file.getAbsolutePath(),
+            PackageManager.GET_SIGNING_CERTIFICATES | PackageManager.GET_SIGNATURES);
         PackageInfo local = installed();
         if (apk == null || !activity.getPackageName().equals(apk.packageName) || apk.getLongVersionCode() <= local.getLongVersionCode()
             || !apk.versionName.equals(version.replaceFirst("^[vV]", "")) || apk.applicationInfo.minSdkVersion > Build.VERSION.SDK_INT) {
