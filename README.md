@@ -23,7 +23,7 @@ Não é necessário Home Assistant. Esta versão não inclui reprodução de mú
 
 ## Demonstração
 
-Abra a [demonstração](https://ludezam.github.io/Quadro-LDZ/demo.html), ou baixe o repositório e abra demo.html no navegador. Ela apresenta seis pinturas do aplicativo, os temas claro e escuro e as mesmas pinceladas de três segundos. Escolha uma cidade no painel para ver o relógio no fuso correspondente e um exemplo de clima. Use as setas e Enter para navegar, ou clique/toque nos botões. A demonstração não consulta a previsão, não coleta dados nem instala APKs.
+Abra a [demonstração](https://ludezam.github.io/Quadro-LDZ/demo.html), ou baixe o repositório e abra demo.html no navegador. Ela usa as 40 pinturas locais, relógio do dispositivo, temas e a transição real de três segundos. Cidade e clima são exemplos ilustrativos; não há consultas de previsão, coleta de dados nem instalação de APK pelo navegador.
 
 ## Aparência
 
@@ -31,7 +31,7 @@ Abra a [demonstração](https://ludezam.github.io/Quadro-LDZ/demo.html), ou baix
 | --- | --- |
 | ![Painel em tema claro](docs/images/light.png) | ![Painel em tema escuro](docs/images/dark.png) |
 
-Capturas da interface em TCL Android 11. O layout se mantém na versão 0.3.0, que acrescenta o novo ícone e as pinturas brasileiras.
+Capturas atuais da interface em uma TCL Android TV. A demo acompanha a coleção de 40 obras, os temas, a troca de pinturas e os controles de cidade; o clima no navegador é ilustrativo.
 
 ## Instalação
 
