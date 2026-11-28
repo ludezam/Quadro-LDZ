@@ -23,7 +23,7 @@ Não é necessário Home Assistant. Esta versão não inclui reprodução de mú
 
 ## Demonstração
 
-Abra a [demonstração](https://ludezam.github.io/Quadro-LDZ/demo.html), ou baixe o repositório e abra demo.html no navegador. Ela usa três pinturas locais, relógio do dispositivo, temas e a transição real de três segundos. Cidade e clima são exemplos ilustrativos; não há consultas de previsão, coleta de dados nem instalação de APK pelo navegador.
+Abra a [demonstração](https://ludezam.github.io/Quadro-LDZ/demo.html), ou baixe o repositório e abra demo.html no navegador. Ela apresenta seis pinturas do aplicativo, os temas claro e escuro e as mesmas pinceladas de três segundos. Escolha uma cidade no painel para ver o relógio no fuso correspondente e um exemplo de clima. Use as setas e Enter para navegar, ou clique/toque nos botões. A demonstração não consulta a previsão, não coleta dados nem instala APKs.
 
 ## Aparência
 
